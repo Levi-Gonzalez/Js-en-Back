@@ -12,8 +12,11 @@ Los valores de los atributos se deberán cargar a través del constructor, al mo
 3)
 Hacer que Usuario cuente con los siguientes métodos:
 getFullName(): String. Retorna el completo del usuario. Utilizar template strings.
+
 addMascota(String): void. Recibe un nombre de mascota y lo agrega al array de mascotas.
 countMascotas(): Number. Retorna la cantidad de mascotas que tiene el usuario.
+
+
 addBook(String, String): void. Recibe un string 'nombre' y un string 'autor' y 
 debe agregar un objeto: { nombre: String, autor: String } al array de libros.
 getBookNames(): String[]. Retorna un array con sólo los nombres del array de libros del usuario.
@@ -23,40 +26,36 @@ getBookNames(): String[]. Retorna un array con sólo los nombres del array de li
 
 */
 class User {
-    constructor (name, lastname ){
-        this.name = name ,
-        this.lastname = lastname,
-        this.books = [] ,
-        this.pets = []
-    };
-
-    
-    getFullName = () => {  
-    return `Hola, bienvenido ${this.name} ${this.lastname}` 
-    };
-    
-    addMascota = (name) => {
-    this.pets.push(name)
-    };
-
-    countMascotas = () => {
-    return (`La cantidad de mascota es: ${this.pets.length}`)   
-    };
-
-    addBook = (nombre, autor) => {
-    {this.books.push ({nombre, autor})}
+    constructor (nombre, apellido){
+        this.nombre = nombre
+        this.apellido = apellido
+        this.libros = []
+        this.mascotas = []
     }
 
-    getBooksName = () => {
-    return this.books.map((books)=> {return books.nombre })
+    getFullName = () =>{
+        return `${this.nombre} ${this.apellido}`
     }
+    addMascota(nombre){
+        return `${this.mascotas.push(nombre)}`
+    }
+    countMascotas(){
+        return `La cantidad de mascotas son : ${this.mascotas.length}`
+    }
+    addBook(nombre,autor){
+        {this.libros.push({nombre, autor})}
+    }
+  getBookNames = () =>
+  {return this.libros.map((libro) => 
+  {return libro.nombre})}
 }
 
-const date = new User ("Levi", "Gonzalez");
-date.addMascota("Bullser");
-date.addBook("The Sagas of Ragnar Lodbrok " , "Ben Waggoner")
+const datos = new User ("Levi" , "Gonzalez")
 
+datos.addMascota("Bullser")
+datos.addBook("Vikings","Levi")
+// datos.countMascotas("")
 
-console.log(date.getFullName());
-console.log(date.countMascotas());
-console.log(date.getBooksName());
+console.log(datos.getFullName());
+console.log(datos.countMascotas());
+console.log(datos.getBookNames());
